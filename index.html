@@ -76,7 +76,7 @@
 			height:50px;
 			margin:10px auto;
 			background:#ff994f;
-			background:url("image/bg.jpg");
+			background:url("bg.jpg");
 			border-radius:8px;
 			color:white;
 		}
@@ -108,7 +108,7 @@
 			width:150px;
 			height:150px;
 			margin:30px auto;
-			background:url("image/bg.jpg");
+			background:url("bg.jpg");
 			border-radius:50%;
 		}
 		label img{
@@ -127,7 +127,7 @@
 			color:white;
 			border-radius:8px;
 			text-align:center;
-			background:url("image/bg.jpg");
+			background:url("bg.jpg");
 			font-size:26px;
 			line-height:50px;
 		}
@@ -141,7 +141,7 @@
 	<audio id="audio" controls="controls" height="100" width="100" autoplay hidden>
 		<source src="./music/uncle.mp3" type="audio/mp3">
 	</audio>
-	<div id="music"><img src="image/yuying.png" id="start"><span id="stop">1.5s</span></div>
+	<div id="music"><img src="yuying.png" id="start"><span id="stop">1.5s</span></div>
 	<div id="wrap">
 		<div class="wall wall1" style="left:0;top:0;border-top-left-radius:8px"></div>
 		<div class="wall wall2" style="left:0;top:50px;"></div>
@@ -189,12 +189,12 @@
 		<div class="wall wall39" style="left:100px;top:0;"></div>
 		<div class="wall wall40" style="left:50px;top:0;"></div>
 
-		<div id="house" style="position:absolute;top:150px;width:50px;height:50px;left:350px;background:url('./image/house.png');background-size:100% 100%">
+		<div id="house" style="position:absolute;top:150px;width:50px;height:50px;left:350px;background:url('./house.png');background-size:100% 100%">
 		</div>
-		<div id="box" style="top:100px;left:50px;background:url('./image/rabite1.png');background-size:100% 100%"></div>
-		<div id="runer1" style="position:absolute;top:100px;left:100px;width:50px;height:50px;"><img src="image/egg.png" id="mainimg" style="width:100%;height:100%"></div>
+		<div id="box" style="top:100px;left:50px;background:url('./rabite1.png');background-size:100% 100%"></div>
+		<div id="runer1" style="position:absolute;top:100px;left:100px;width:50px;height:50px;"><img src="egg.png" id="mainimg" style="width:100%;height:100%"></div>
 	</div>
-		<div class="egg"><input type="file" id="file" hidden><label for="file"><img id="img1" src="image/egg.png"></label><div id="changebox">更换你的盒子</div></div>
+		<div class="egg"><input type="file" id="file" hidden><label for="file"><img id="img1" src="egg.png"></label><div id="changebox">更换你的盒子</div></div>
 		<div class="bottom"><button id="save">保存</button><button id="reset">重来</button></div>
 </body>
 <script>
@@ -206,7 +206,7 @@
 		
 		document.onkeydown = function(){
 			if(event.keyCode == 40){//向下
-				box.style.background="url('image/rabitedown.png')";
+				box.style.background="url('rabitedown.png')";
 				box.style.backgroundSize="100% 100%";
 				box.style.top=parseInt(box.style.top)+50+"px";
 				clearBottom();
@@ -214,7 +214,7 @@
 				bbox_run();
 			}
 			if(event.keyCode == 38){//向上
-				box.style.background="url('image/rabiteup.png')";
+				box.style.background="url('rabiteup.png')";
 				box.style.backgroundSize="100% 100%";
 				box.style.top=parseInt(box.style.top)-50+"px";
 				clearRunTop();
@@ -223,7 +223,7 @@
 				success();
 			}
 			if(event.keyCode == 37){//向左
-				box.style.background="url('image/rabiteleft.png')";
+				box.style.background="url('rabiteleft.png')";
 				box.style.backgroundSize="100% 100%";
 				box.style.left=parseInt(box.style.left)-50+"px";
 				clearRunLeft();
@@ -231,7 +231,7 @@
 				lbox_run();
 			}
 			if(event.keyCode == 39){//向右
-				box.style.background="url('image/rabite1.png')";
+				box.style.background="url('rabite1.png')";
 				box.style.backgroundSize="100% 100%";
 				box.style.left=parseInt(box.style.left)+50+"px";
 				console.log(box.style.left+","+runer1.style.left);
@@ -433,13 +433,13 @@
 		
 		/*-------------给墙设置背景--------------*/
 		for(var i=0;i<wall.length;i++){
-		 			wall[i].style.background="url('image/bg.jpg')";
+		 			wall[i].style.background="url('bg.jpg')";
 			   }
 		/*-------------游戏结束--------------*/
 		var house=document.getElementById("house");
 		function success(){
 			if(parseInt(runer1.style.top)==150 && parseInt(runer1.style.left)==350){
-				house.style.background="url('image/house2.png')";
+				house.style.background="url('house2.png')";
 				runer1.style.display="none";
 				stopMusic();
 				runer1.style.transition="display 2s";
@@ -487,14 +487,14 @@
 		/*----------------重置数据-------------------*/
 		var  reset=document.getElementById("reset");
 		reset.onclick=function reset(){
-			box.style.background="url('image/rabite1.png')";
+			box.style.background="url('rabite1.png')";
 			box.style.backgroundSize="100% 100%";
 			box.style.left="50px";
 			box.style.top="100px";
 			runer1.style.display="block";
 			runer1.style.left="100px";
 			runer1.style.top="100px";
-			mainimg.src="image/egg.png";
+			mainimg.src="egg.png";
 			audio.play();
 
 		}
