@@ -1,2 +1,526 @@
-<h1 style="text-align:center">HELLO 二狗子，你妈的不是人啊！！！！</h1>
-<img src="http://img3.imgtn.bdimg.com/it/u=82985096,3807292249&fm=21&gp=0.jpg" style="display:block;margin:10px auto;">
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js</title>
+	<style type="text/css">
+	    *{
+	    	margin:0;
+	    	padding:0;
+	    }
+	    body{
+	    	font-family:"微软雅黑";
+	    	background:#f0f0f0;
+ 		}
+ 		.clear{
+ 			clear:both;
+ 		}
+ 		#wrap{
+ 			width:450px;
+ 			height:450px;
+ 			margin:10px auto 30px auto;
+ 			position:relative;
+ 		}
+ 		#box{
+ 			position:absolute;
+ 			top: 50px;
+ 			left: 50px;
+ 			width:50px;
+ 			height:50px;
+ 			background:black;
+ 		}
+ 		.wall{	
+ 			position:absolute;
+ 			height:50px;
+ 			width:50px;
+ 			/*background:blue;*/
+ 		}
+		.bottom{
+			width:500px;
+			height:50px;
+			margin:8px auto;
+		}
+		#save{
+			background:#ff994f;
+			font-size:26px;
+			font-weight:bold;
+			text-align:center;
+			width:200px;
+			height:50px;
+			color:white;
+			margin-left:45px;
+			border:none;
+			outline:none;
+			border-radius:8px;
+		}
+		#reset{
+			background:#ff994f;
+			font-size:26px;
+			font-weight:bold;
+			text-align:center;
+			width:200px;
+			height:50px;
+			color:white;
+			margin-left:45px;
+			border:none;
+			outline:none;
+			border-radius:8px;
+		}
+		#reset:hover,#save:hover{
+			background:#ffbc6a;
+			cursor:pointer;
+			text-shadow:2px 2px 2px black;
+		}
+		#music{
+			width:250px;
+			height:50px;
+			margin:10px auto;
+			background:#ff994f;
+			background:url("image/bg.jpg");
+			border-radius:8px;
+			color:white;
+		}
+		#music img:hover,#music span:hover{
+			cursor:pointer;
+			text-shadow:2px 2px 2px black;
+		}
+		#music img{
+			width:30px;
+			height:30px;
+			margin:10px;
+		}
+		#music span{
+			float:right;
+			font-size:26px;
+			margin-right:20px;
+			line-height:50px;
+		}
+		.egg{
+			position:absolute;
+			top:110px;
+			right:120px;
+			width:300px;
+			height:250px;
+			border:1px solid transparent;
+		}
+		label{
+			display:block;
+			width:150px;
+			height:150px;
+			margin:30px auto;
+			background:url("image/bg.jpg");
+			border-radius:50%;
+		}
+		label img{
+			margin:25px 25px;
+			width:100px;
+			height:100px;
+			border-radius:50%;
+		}
+		label img:hover{
+			cursor:pointer;
+		}
+		#changebox{
+			margin:0 auto;
+			width:200px;
+			height:50px;
+			color:white;
+			border-radius:8px;
+			text-align:center;
+			background:url("image/bg.jpg");
+			font-size:26px;
+			line-height:50px;
+		}
+		#changebox:hover{
+			cursor:pointer;
+			text-shadow:2px 2px 2px black;
+		}
+ 	</style>
+</head>
+<body>
+	<audio id="audio" controls="controls" height="100" width="100" autoplay hidden>
+		<source src="./music/uncle.mp3" type="audio/mp3">
+	</audio>
+	<div id="music"><img src="image/yuying.png" id="start"><span id="stop">1.5s</span></div>
+	<div id="wrap">
+		<div class="wall wall1" style="left:0;top:0;border-top-left-radius:8px"></div>
+		<div class="wall wall2" style="left:0;top:50px;"></div>
+		<div class="wall wall3" style="left:0;top:100px;"></div>
+		<div class="wall wall4" style="left:0;top:150px;"></div>
+
+		<div class="wall wall5" style="left:0;top:200px;border-bottom-left-radius:8px"></div>
+		<div class="wall wall6" style="left:50px;top:200px;"></div>
+		<div class="wall wall7" style="left:100px;top:200px;border-top-right-radius:8px"></div>
+		<div class="wall wall8" style="left:50px;top:250px;"></div>
+
+		<div class="wall wall9" style="left:100px;top:250px;border-bottom-right-radius:8px"></div>
+		<div class="wall wall10" style="left:50px;top:300px;"></div>
+		<div class="wall wall11" style="left:50px;top:350px;"></div>
+		<div class="wall wall12" style="left:50px;top:400px;border-bottom-left-radius:8px"></div>
+		<div class="wall wall13" style="left:100px;top:400px;"></div>
+		<div class="wall wall14" style="left:150px;top:400px;"></div>
+		<div class="wall wall15" style="left:200px;top:400px;"></div>
+		<div class="wall wall16" style="left:250px;top:400px;border-bottom-right-radius:8px"></div>
+		<div class="wall wall17" style="left:250px;top:350px;"></div>
+
+		<div class="wall wall18" style="left:250px;top:300px;border-top-right-radius:8px;border-top-left-radius:8px"></div>
+		<div class="wall wall19" style="left:300px;top:350px;"></div>
+		<div class="wall wall20" style="left:350px;top:350px;"></div>
+		<div class="wall wall21" style="left:400px;top:350px;border-bottom-right-radius:8px"></div>
+
+		<div class="wall wall22" style="left:400px;top:300px;"></div>
+		<div class="wall wall23" style="left:400px;top:300px;"></div>
+		<div class="wall wall24" style="left:400px;top:250px;"></div>
+		<div class="wall wall25" style="left:400px;top:200px;"></div>
+		<div class="wall wall26" style="left:400px;top:150px;"></div>
+
+		<div class="wall wall27" style="left:400px;top:100px;border-top-right-radius:8px"></div>
+		<div class="wall wall28" style="left:350px;top:100px;"></div>
+		<div class="wall wall29" style="left:300px;top:100px;border-top-left-radius:8px"></div>
+		<div class="wall wall30" style="left:300px;top:150px;"></div>
+		<div class="wall wall31" style="left:300px;top:200px;border-bottom-right-radius:8px"></div>
+		<div class="wall wall32" style="left:250px;top:200px;"></div>
+		<div class="wall wall33" style="left:200px;top:200px;border-bottom-left-radius:8px"></div>
+		<div class="wall wall34" style="left:200px;top:150px;"></div>
+		<div class="wall wall35" style="left:200px;top:100px;"></div>
+		<div class="wall wall36" style="left:200px;top:50px;"></div>
+		<div class="wall wall37" style="left:200px;top:0;border-top-right-radius:8px"></div>
+		<div class="wall wall38" style="left:150px;top:0;"></div>
+		<div class="wall wall39" style="left:100px;top:0;"></div>
+		<div class="wall wall40" style="left:50px;top:0;"></div>
+
+		<div id="house" style="position:absolute;top:150px;width:50px;height:50px;left:350px;background:url('./image/house.png');background-size:100% 100%">
+		</div>
+		<div id="box" style="top:100px;left:50px;background:url('./image/rabite1.png');background-size:100% 100%"></div>
+		<div id="runer1" style="position:absolute;top:100px;left:100px;width:50px;height:50px;"><img src="image/egg.png" id="mainimg" style="width:100%;height:100%"></div>
+	</div>
+		<div class="egg"><input type="file" id="file" hidden><label for="file"><img id="img1" src="image/egg.png"></label><div id="changebox">更换你的盒子</div></div>
+		<div class="bottom"><button id="save">保存</button><button id="reset">重来</button></div>
+</body>
+<script>
+		var wrap=document.getElementById("wrap"); 
+		var box=document.getElementById("box"); 
+		var runer1=document.getElementById("runer1");
+		var wall=document.getElementsByClassName("wall");
+		var  mainimg=document.getElementById("mainimg");
+		
+		document.onkeydown = function(){
+			if(event.keyCode == 40){//向下
+				box.style.background="url('image/rabitedown.png')";
+				box.style.backgroundSize="100% 100%";
+				box.style.top=parseInt(box.style.top)+50+"px";
+				clearBottom();
+				clearRunBottom();
+				bbox_run();
+			}
+			if(event.keyCode == 38){//向上
+				box.style.background="url('image/rabiteup.png')";
+				box.style.backgroundSize="100% 100%";
+				box.style.top=parseInt(box.style.top)-50+"px";
+				clearRunTop();
+				clearTop();
+				tbox_run();
+				success();
+			}
+			if(event.keyCode == 37){//向左
+				box.style.background="url('image/rabiteleft.png')";
+				box.style.backgroundSize="100% 100%";
+				box.style.left=parseInt(box.style.left)-50+"px";
+				clearRunLeft();
+				clearLeft();
+				lbox_run();
+			}
+			if(event.keyCode == 39){//向右
+				box.style.background="url('image/rabite1.png')";
+				box.style.backgroundSize="100% 100%";
+				box.style.left=parseInt(box.style.left)+50+"px";
+				console.log(box.style.left+","+runer1.style.left);
+				clearRunRight();
+				clearRight();
+				rbox_run();
+				// console.log(box.style.left+","+runer1.style.left);
+			}
+		}
+		/*-----------------清除墙对人物和盒子二者的影响---------------------------*/
+		// var wall=document.getElementsByClassName("wall");
+		function clearRight(){
+			  for(var i=0;i<wall.length;i++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(box.style.left) == parseInt(wall[i].style.left) && parseInt(box.style.top) == parseInt(wall[i].style.top))
+			  	  		{
+			  	  		// alert(111);
+			  			   box.style.left=parseInt(box.style.left)-50+"px";
+			  			}
+			   }
+		
+		 	  for(var j=0;j<wall.length;j++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(runer1.style.left) == parseInt(wall[j].style.left) && parseInt(runer1.style.top) == parseInt(wall[j].style.top))
+			  	  		{
+			  	  		// alert(111);
+			  			   runer1.style.left=parseInt(box.style.left)-50+"px";
+			  			}
+			   }
+		
+			}
+		
+		function clearLeft(){
+			  for(var i=0;i<wall.length;i++){//排除向左触墙
+			  	        // console.log(wall[36].style.top);
+			  	  		if(parseInt(box.style.left) == parseInt(wall[i].style.left) && parseInt(box.style.top) == parseInt(wall[i].style.top))
+			  	  		{
+			  	  		// alert(111);
+			  			   box.style.left=parseInt(box.style.left)+50+"px";
+			  			}
+			  	 }
+		
+		
+			   for(var j=0;j<wall.length;j++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(runer1.style.left) == parseInt(wall[j].style.left) && parseInt(runer1.style.top) == parseInt(wall[j].style.top))
+			  	  		{
+			  	  		// alert(111);
+			  			   runer1.style.left=parseInt(box.style.left)+50+"px";
+			  			}
+			     }
+			}
+		
+		function clearTop(){
+			  for(var i=0;i<wall.length;i++){//排除向上触墙
+			  	  		if(parseInt(box.style.top) == parseInt(wall[i].style.top) && parseInt(box.style.left) == parseInt(wall[i].style.left))
+			  	  		{
+			  	  		// alert(111);
+			  			   box.style.top=parseInt(box.style.top)+50+"px";
+			  			}
+			   }
+		
+			    for(var j=0;j<wall.length;j++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(runer1.style.top) == parseInt(wall[j].style.top) && parseInt(runer1.style.left) == parseInt(wall[j].style.left))
+			  	  		{
+			  	  		// alert(111);
+			  			   runer1.style.top=parseInt(box.style.top)+50+"px";
+			  			}
+			   }
+			}
+		
+		function clearBottom(){
+			  for(var i=0;i<wall.length;i++){//排除向下触墙
+			  	  		if(parseInt(box.style.top) == parseInt(wall[i].style.top) && parseInt(box.style.left) == parseInt(wall[i].style.left))
+			  	  		{
+			  	  		// alert(111);
+			  			   box.style.top=parseInt(box.style.top)-50+"px";
+			  			}
+			   }
+		
+		
+			   for(var j=0;j<wall.length;j++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(runer1.style.top) == parseInt(wall[j].style.top) && parseInt(runer1.style.left) == parseInt(wall[j].style.left))
+			  	  		{
+			  	  		// alert(111);
+			  			   runer1.style.top=parseInt(box.style.top)-50+"px";
+			  			}
+			   }
+			}
+		 /*----------------清除移动盒子对人的影响----------------------------*/
+		function clearRunRight(){
+			if(parseInt(box.style.left) == parseInt(runer1.style.left) && parseInt(box.style.top) == parseInt(runer1.style.top)){
+				box.style.left=parseInt(box.style.left)-50+"px";
+			}
+		}
+		function clearRunLeft(){
+			if(parseInt(box.style.left) == parseInt(runer1.style.left) && parseInt(box.style.top) == parseInt(runer1.style.top)){
+				box.style.left=parseInt(box.style.left)+50+"px";
+			}
+		}
+		function clearRunTop(){
+			if(parseInt(box.style.top) == parseInt(runer1.style.top) && parseInt(box.style.left) == parseInt(runer1.style.left)){
+				box.style.top=parseInt(box.style.top)+50+"px";
+			}
+		}
+		function clearRunBottom(){
+			if(parseInt(box.style.top) == parseInt(runer1.style.top) && parseInt(box.style.left) == parseInt(runer1.style.left)){
+				box.style.top=parseInt(box.style.top)-50+"px";
+			}
+		}
+		
+		/*-------------盒子的移动与停止函数-------------------*/
+		function rbox_run(){
+		  	if(parseInt(box.style.left)==parseInt(runer1.style.left)-50 && parseInt(box.style.top) == parseInt(runer1.style.top)){		
+		  			 rstopRun();
+		  			 runer1.style.left=parseInt(runer1.style.left)+50+"px";
+		  			 box.style.left=parseInt(box.style.left)+50+"px";
+		  			 clearRight();//调用函数判断清除墙体对盒子的影响。
+		  			 
+		  			 
+				}
+		}
+		function rstopRun(){
+		       for(var i=0;i<wall.length;i++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(box.style.left) == parseInt(wall[i].style.left)-100 && parseInt(box.style.top) == parseInt(wall[i].style.top))
+			  	  		{
+			  	  		   // alert(111);
+			  			    runer1.style.left=parseInt(runer1.style.left)-50+"px";
+			  			   	box.style.left=parseInt(box.style.left)-50+"px";
+			  			    break;//防止越界，在移动块靠近墙时，各减50，break掉后面所有的移动函数，停止移动。
+			  			}
+			   }
+		}
+		
+		
+		function lbox_run(){
+		  	if(parseInt(box.style.left)==parseInt(runer1.style.left)+50 && parseInt(box.style.top) == parseInt(runer1.style.top)){		
+		  			 lstopRun();
+		  			 runer1.style.left=parseInt(runer1.style.left)-50+"px";
+		  			 box.style.left=parseInt(box.style.left)-50+"px";
+		  			 clearLeft();//调用函数判断清除墙体对盒子的影响。
+		  			 
+				}
+		}
+		function lstopRun(){
+		       for(var i=0;i<wall.length;i++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(box.style.left) == parseInt(wall[i].style.left)+100 && parseInt(box.style.top) == parseInt(wall[i].style.top))
+			  	  		{
+			  	  		   // alert(111);
+			  			    runer1.style.left=parseInt(runer1.style.left)+50+"px";
+			  			   	box.style.left=parseInt(box.style.left)+50+"px";
+			  			    break;//防止越界，在移动块靠近墙时，各减50，break掉后面所有的移动函数，停止移动。
+			  			}
+			   }
+		}
+		
+		
+		function tbox_run(){
+		  	if(parseInt(box.style.top)==parseInt(runer1.style.top)+50 && parseInt(box.style.left) == parseInt(runer1.style.left)){		
+		  			 tstopRun();
+		  			 runer1.style.top=parseInt(runer1.style.top)-50+"px";
+		  			 box.style.top=parseInt(box.style.top)-50+"px";
+		  			 clearTop();//调用函数判断清除墙体对盒子的影响。
+		  			 
+				}
+		}
+		function tstopRun(){
+		       for(var i=0;i<wall.length;i++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(box.style.top) == parseInt(wall[i].style.top)+100 && parseInt(box.style.left) == parseInt(wall[i].style.left))
+			  	  		{
+			  	  		   // alert(111);
+			  			    runer1.style.top=parseInt(runer1.style.top)+50+"px";
+			  			   	box.style.top=parseInt(box.style.top)+50+"px";
+			  			    break;//防止越界，在移动块靠近墙时，各减50，break掉后面所有的移动函数，停止移动。
+			  			}
+			   }
+		}
+		
+		
+		
+		function bbox_run(){
+		  	if(parseInt(box.style.top)==parseInt(runer1.style.top)-50 && parseInt(box.style.left) == parseInt(runer1.style.left)){		
+		  			 bstopRun();
+		  			 runer1.style.top=parseInt(runer1.style.top)+50+"px";
+		  			 box.style.top=parseInt(box.style.top)+50+"px";
+		  			 clearBottom();//调用函数判断清除墙体对盒子的影响。
+		  			 
+				}
+		}
+		function bstopRun(){
+		       for(var i=0;i<wall.length;i++){//排除向右触墙，原理是当盒子的左距离与墙的左距离相等且盒子高等于墙的高时，减去50像素，不让它越界。
+			  	  		if(parseInt(box.style.top) == parseInt(wall[i].style.top)-100 && parseInt(box.style.left) == parseInt(wall[i].style.left))
+			  	  		{
+			  	  		   // alert(111);
+			  			    runer1.style.top=parseInt(runer1.style.top)-50+"px";
+			  			   box.style.top=parseInt(box.style.top)-50+"px";
+			  			    break;//防止越界，在移动块靠近墙时，各减50，break掉后面所有的移动函数，停止移动。
+			  			}
+			   }
+		}
+		
+		
+		/*-------------给墙设置背景--------------*/
+		for(var i=0;i<wall.length;i++){
+		 			wall[i].style.background="url('image/bg.jpg')";
+			   }
+		/*-------------游戏结束--------------*/
+		var house=document.getElementById("house");
+		function success(){
+			if(parseInt(runer1.style.top)==150 && parseInt(runer1.style.left)==350){
+				house.style.background="url('image/house2.png')";
+				runer1.style.display="none";
+				stopMusic();
+				runer1.style.transition="display 2s";
+			}
+		
+		}
+		/*-------------音乐控制--------------*/
+		var audio=document.getElementById("audio");
+		var start=document.getElementById("start");
+		var stop=document.getElementById("stop");
+
+		start.onclick=function(){
+			audio.play();
+		}
+		stop.onclick=function(){
+			audio.pause();
+		}
+		/*-------------音乐停止--------------*/
+		function stopMusic(){
+			audio.pause();
+			audio.currentTime=0;//将歌曲时间归0.
+		}
+		/*-------------本地保存与读取数据--------------*/
+		var save=document.getElementById("save");
+		save.onclick=function save(){
+			localStorage.background=box.style.background;
+			localStorage.boxLeft=box.style.left;
+			localStorage.boxTop=box.style.top;
+			localStorage.runerLeft=runer1.style.left;
+			localStorage.runerTop=runer1.style.top;
+			console.log(localStorage.boxLeft+","+localStorage.boxTop)
+		}
+		window.onload=function read(){
+			if(localStorage.boxLeft && localStorage.boxTop){
+				box.style.background=localStorage.background;
+				box.style.left=localStorage.boxLeft;
+				box.style.top=localStorage.boxTop;
+				runer1.style.left=localStorage.runerLeft;
+				runer1.style.top=localStorage.runerTop;
+				if(parseInt(runer1.style.top)==150 && parseInt(runer1.style.left)){
+					runer1.style.display="none";
+				}
+			}
+		}
+		/*----------------重置数据-------------------*/
+		var  reset=document.getElementById("reset");
+		reset.onclick=function reset(){
+			box.style.background="url('image/rabite1.png')";
+			box.style.backgroundSize="100% 100%";
+			box.style.left="50px";
+			box.style.top="100px";
+			runer1.style.display="block";
+			runer1.style.left="100px";
+			runer1.style.top="100px";
+			mainimg.src="image/egg.png";
+			audio.play();
+
+		}
+		/*------------上传图片----------*/
+		var  changebox=document.getElementById("changebox");
+		var  file=document.getElementById("file");
+		var  img1=document.getElementById("img1");
+	    file.onchange=function(){
+	    	var imgsrc=file.files[0];
+	    	var url=window.URL.createObjectURL(imgsrc);
+	    	img1.src=url;
+	    }
+	    /*-----------更换盒子样式-------------------*/
+	    changebox.onclick=function(){
+	    	mainimg.src=img1.src;
+	    }
+	    /*-----------动态获取所有样式与值的方法--------------*/
+		function getStyle(obj,attr){//传入两个参数，一个是样式对象如class，div等的名字mydiv，wrap等，一个是这个样式的属性，引用这个方法要给属性加引号。
+			if(obj.currentStyle){//测试是否是ie，是ie则调用currentStyle方法。
+				return obj.currentStyle[attr];//属性区别于变量，应该加引号，但此处不加，在调用的时候加。
+			}
+			else{
+				return window.getComputedStyle(obj)[attr];//其他的浏览器调用这个方法。
+			}
+		} 
+		// var test=getStyle(music,"width");//width加引号
+		// alert(test);
+</script>
+</html>
